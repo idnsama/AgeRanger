@@ -33,7 +33,7 @@ p.LastName,
 p.Age,
 ag.Description as AgeGroup
 from Person p 
-join AgeGroup ag on (ag.MinAge is null or ag.MinAge <= p.Age) and (ag.MaxAge is null or ag.MaxAge > p.Age) 
+join AgeGroup ag on ((ag.MinAge is null or ag.MinAge = '') or ag.MinAge <= p.Age) and ((ag.MaxAge is null or ag.MaxAge = '') or ag.MaxAge > p.Age) 
 order by p.Id 
 limit @start, @length;",
                     new { start = Start, length = Length }).ToList();
@@ -67,7 +67,7 @@ p.LastName,
 p.Age,
 ag.Description as AgeGroup
 from Person p 
-join AgeGroup ag on (ag.MinAge is null or ag.MinAge <= p.Age) and (ag.MaxAge is null or ag.MaxAge > p.Age) 
+join AgeGroup ag on ((ag.MinAge is null or ag.MinAge = '') or ag.MinAge <= p.Age) and ((ag.MaxAge is null or ag.MaxAge = '') or ag.MaxAge > p.Age) 
 where p.FirstName = @name COLLATE NOCASE or p.LastName = @name COLLATE NOCASE
 order by p.Id
 limit @start, @length;",
