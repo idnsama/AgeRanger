@@ -1,0 +1,42 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pad-bottom {
+    padding-bottom: 12px;
+}
+
+table#person-list 
+{
+    table-layout: fixed;
+}
+
+table#person-list #header-age {
+    width: 8%;
+}
+
+table#person-list #header-edit {
+    width: 7%;
+}
+
+table#person-list #header-delete {
+    width: 8%;
+}
+
+table#person-list .use-hand-cursor {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
