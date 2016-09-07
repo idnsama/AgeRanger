@@ -4,7 +4,7 @@ This is a single-page application with paginated person list display. Front-end 
 Tests cover all API controller methods and underlyind data layer methods. Local test copy of the SQLite database is used for testing.
 Please be careful with website publishing as default empty copy of the database is set to overwrite the existing file in App_Data folder for testing convenience.
 
-
+********************************************************************************************************************************************
 
 WEB API:
 
@@ -14,6 +14,7 @@ Parameters:
 {filterString}: sets a filter on the output. Only records with first or last name matching filterString will be returned. Empty filterString disables filter.
 {pos}: position of the first element on the current page in the list. Defauls is 0.
 {len}: length of the page. Defailt is 10.
+
 
 
 /api/getTotalCount?filterString={filterString}
@@ -35,7 +36,7 @@ Data model: { id: {id}, firstName: {firstname}, lastName: {lastname}, age: {age}
 /api/getDeletePerson?id={id}
 Deletes a record. Returns true if successfull.
 
-
+********************************************************************************************************************************************
 
 
 TODO:
@@ -57,21 +58,21 @@ TODO:
 7) Add page size selector.
 
 
+********************************************************************************************************************************************
 
-
-Possible points to discuss about existing database schema:
+Possible points to discuss about existing database schema and application in general:
 
 1) Consider to change data types for person table fields to a more strict ones.
 
-2) It's not reliable to identify a person by the name and age only. This will cause too many collisions on a DB size of a few thousand.
+2) It's not reliable to identify a person by the name and age only. This will cause too many collisions on a DB size of a few thousand or more.
    Identification of a person on global scale must include other data as well, like DOB, place of birth etc.
    That is unless there's no requirement to avoid collisions in the first place, so as collisions are actually acceptable and several different persons with the same Name and Age may occupy the same record.
 
-3) Consider to use DOB instead of age to ensure the data is valid over the time. Obviously, if only Age is stored then entried would become invalid within a year.
+3) Consider to use DOB instead of age to ensure the data is valid over the time. Obviously, if only Age is stored then Person records would become invalid within a year.
 
-4) Due to potential number of Person entries it's recommended to add indexes on FirstName, LastName and possibly Age fields to speed up lookups.
+4) Due to potential number of Person records it's recommended to add indexes on FirstName, LastName and possibly Age fields to speed up lookups.
 
-5) If application is expected to reach global scale and popularity, we might consider to make Person ID long instead of integer. Int is too short comparing to the potential number of entries on the global scale. Might also consider splitting data between several tables if more than a few million records expected.
+5) If application is expected to reach global scale and popularity, we might consider to make Person ID long instead of integer. Int is too short comparing to the potential number of records on the global scale. Might also consider splitting data between several tables if more than a few million records expected.
 
 6) Application might benefit if there's a way to authorise users.
 
